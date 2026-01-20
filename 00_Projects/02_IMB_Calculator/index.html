@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Body Mass Index</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: "Jost", sans-serif;
+        font-size: 62.5%;
+      }
+      label,
+      input,
+      p,
+      button {
+        font-family: "Jost", sans-serif;
+        font-size: 2.2rem;
+      }
+
+      .container {
+        width: 80rem;
+        margin: auto;
+
+        & h1 {
+          text-align: center;
+          font-weight: 600;
+          font-size: 3.8rem;
+          padding: 4rem 0 2rem 0;
+          color: #ff4f5b;
+          text-transform: uppercase;
+        }
+        & .grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          border: 1px solid black;
+          border-radius: 10px;
+        }
+        & .result-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      button {
+       margin-top: -1rem;
+        padding: 0.7rem 1.4rem;
+        border: none;
+        border-radius: 0.8rem;
+        background-color: #ff4f5b;
+        color: white;
+        border: 0.1rem solid #ff4f5b;
+        transition: all 0.3s linear;
+        &:hover {
+          background-color: #fff4f5;
+          color: #000000;
+          border: 0.1rem solid #000000;
+        }
+      }
+      .bmi-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+
+
+        & img {
+          width: 30rem;
+        }
+      }
+
+      .bmi-content {
+        background-color: #ff9da5;
+        padding: 2.8rem;
+        border-radius: 0px 10px 10px 0px;
+
+        border-left: 1px solid black;;
+        & label {
+          display: block;
+        }
+        & input {
+          width: 100%;
+          margin-bottom: 1.8rem;
+          border: 1px solid black;
+          border-radius: 0.8rem;
+          padding: 0.5rem 1rem;
+        }
+        & .btn {
+          margin-top: 1.8rem;
+          display: flex;
+          justify-content: end;
+
+          margin-bottom: 1.8rem;
+        }
+      }
+
+      .result{
+       padding-top: 2.8rem;
+       .result-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        & input{
+         border: .1rem solid black;
+         background-color: white;
+         color: #000000;
+        }
+       }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./index.js"></script>
+    <div class="container">
+      <h1>Body Mass Index</h1>
+      <div class="grid two-column">
+        <div class="bmi-image">
+          <img src="./health.png" alt="A girl do exersice or yoga" />
+        </div>
+        <div class="bmi-content">
+          <label for="weight">Enter Your Weight:</label>
+          <input type="number" placeholder="00.0" id="weight" />
+          <label for="height">Enter Your Height (In Meter):</label>
+          <input type="number" placeholder="00.0" id="height" />
+          <div class="btn">
+            <button onclick="calculateBMI()">Submit</button>
+          </div>
+
+          <div class="result">
+            <div class="result-grid">
+              <label for="bmi-score">BMI Score: </label>
+              <input type="number" id="bmi-score" placeholder="00.0" disabled />
+            </div>
+            <div class="result-grid">
+              <label for="bmi-status">BMI Status: </label>
+              <input type="text" disabled id="bmi-status" placeholder="None" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

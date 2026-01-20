@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      #images {
+        border: 2px solid beige;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      body {
+        background-color: #404040;
+        color: aliceblue;
+        font-family: cursive;
+        padding: 24px;
+      }
+
+      a {
+        color: aqua;
+      }
+
+      ul {
+        list-style: none;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        transition: 0.2s all linear;
+        cursor: progress;
+        &:hover {
+          box-shadow: 0px 0px 10px rgb(255, 0, 0);
+        }
+        & img {
+          border-radius: 10px;
+          border: 1px solid white;
+          transition: all 0.2s linear;
+          cursor: pointer;
+          &:hover {
+            box-shadow: 0px 0px 10px rgb(255, 0, 0);
+          }
+        }
+      }
+
+      span {
+        display: block;
+        background-color: rgb(9, 32, 52);
+        width: 70px;
+        height: 70px;
+        display: grid;
+        place-items: center;
+        color: rgb(255, 255, 255);
+        font-size: 48px;
+        border-radius: 50%;
+        transition: all 0.3s linear;
+        cursor: pointer;
+
+        &:hover {
+          scale: 1.1;
+          background-color: #9a81ff;
+          color: rgb(22, 22, 7);
+        }
+      }
+
+      .container {
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        gap: 12px;
+        & div {
+          width: 200px;
+          aspect-ratio: 1;
+          background-color: #163c17;
+          border-radius: 12px;
+
+          display: grid;
+          place-items: center;
+
+          font-size: 108px;
+          margin-bottom: 24px;
+
+          cursor: pointer;
+        }
+      }
+    </style>
+    <title>HTML Events</title>
+  </head>
+  <body>
+    <h2 style="text-align: center; margin: 58px 0px 12px 0">Amazing Images</h2>
+    <ul id="images">
+      <li>
+        <img
+          width="200px"
+          id="photoshop"
+          src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt="photoshop"
+        />
+      </li>
+
+      <li>
+        <img
+          width="200px"
+          id="japan"
+          src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt=""
+        />
+      </li>
+
+      <li>
+        <img
+          width="200px"
+          id="river"
+          src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt=""
+        />
+      </li>
+
+      <li>
+        <img
+          width="200px"
+          id="owl"
+          src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt=""
+        />
+      </li>
+
+      <li>
+        <img
+          width="200px"
+          id="prayer"
+          src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt=""
+        />
+      </li>
+      <li>
+        <a href="https://www.google.com/" id="google" target="_blank">Google</a>
+      </li>
+    </ul>
+
+    <!-- Keyboard events -->
+    <h2 tabindex="0" id="h1" style="text-align: center; margin: 58px 0 12px 0">
+      Keyboard Events
+    </h2>
+    <input type="text" style="margin: auto" />
+
+    <!-- Mouse events -->
+
+    <h2 draggable="true" style="text-align: center; margin: 58px 0 12px 0">
+      Mouse Events
+    </h2>
+
+    <span draggable="true">+</span>
+
+    <div class="container"></div>
+  </body>
+  <script>
+    /*👋Importante
+        -> type, timestamp, defaultPrevented
+        -> target, toElement, srcElement, currentTarget
+        -> clientX, clientY, scrrenX, screenY
+        -> altkey, ctrlkey, shiftkey, keyCpdee
+    */
+
+    document.querySelector("#images").addEventListener("click", (e) => {
+      console.log("clicked inside the ulr");
+    });
+
+    document.querySelector("#owl").addEventListener("click", (e) => {
+      console.log("owl clicked");
+    });
+
+    /*📌Event Propagation:-
+         Event propagation means how an event travels between parent and child elements in the DOM.
+
+         3 phases
+            1. Capturing
+            2. Target
+            3. Bubbling
+
+         1️⃣ Capturing Phase (Top → Bottom)
+             Document → Body → Div → Button
+
+         2️⃣ Target Phase
+             Button
+
+         3️⃣ Bubbling Phase (Bottom → Top) ✅ (Default)
+             Button → Div → Body → Document
+
+     📌Event Propagation
+         1. Event Capuring (parent -> childe) => true
+         2. Event Bubbling (child -> parent) => false (byDefault)
+
+     📌if we don't want Propagation then w'll use
+            e.stopPropagation();
+
+      📌element.addEventListener("click", (e)=>{...}, {once: true}) -> we can click only one time of any element of webpage that element was applied click event 
+     */
+
+    document.querySelector("#google").addEventListener(
+      "click",
+      (e) => {
+        console.log("Oye Aman, I'm a Google not googly");
+        e.preventDefault(); //-> webpage ke "Google" pe click karenge to google page open nahi hoga
+        e.stopPropagation();
+      },
+      false
+    );
+    /*📌preventDefault():-
+         preventDefault() stops the browser’s default action associated with an event.
+
+     NOTE:- preventDefault() ek method hai jo browser ke default behavior ko rok deta hai jab koi event hota hai.
+
+     :=> Difference
+         1. preventDefault()
+             👉 event flow nahi rokta
+         2. Event propagation
+             👉 browser behavior se related nahi hota
+     */
+
+    //Question: Remove child elent in ul
+    //jab ham kisi particular img pe click karte hai to exact img ka context aata hai our hme lgta ki li ka aayega
+
+    document.querySelector("#images").addEventListener(
+      "click",
+      (e) => {
+        if (e.target.tagName === "IMG") {
+          //1st way
+          e.target.parentNode.remove();
+
+          //2st way
+          // let delImg = e.target.parentNode;
+          // delImg.parentNode.removeChild(delImg);
+        }
+      },
+      false
+    );
+
+    /*
+     Note:=> child.parentNode se kisi bhi element ke parent tak pahut sakte hai
+     */
+
+    /*
+     <=|:::EXTRA:::|=>
+
+     .=Type of events in
+
+         :::Input Tag:::
+           1.  click -> Mouse click par -> Keyboard support❌
+           2.  dblclick
+           3.  input -> when we write something in input field then fire that event -> it's a amazing
+           4.  chang -> jab input me koi bhi naya value dalte hai ya change kar ke bahar aate hai tab ye event accure hota hai
+           5.  focus -> cursore ko element pe le jake click ya tab karne pe -> input field active -> Element active hone par -> ✅ Yes (Tab se) -> input me bohot use hotra hai -> (use) Highlight field
+           6.  blur -> focus chala gaya -> Cursor bahar jane par -> (use) Error check
+
+         :::Form -> (Input + Button):::
+
+
+         :::Keyboard Event:::
+           -> When we click any keyboard button then accure keyboard events
+           -> ham kisi bhi element pe keyboard events laga sakte hai bs wah focus me hona chahie
+           -> focus ka matlab hota hai jis element pe cursore hai wo element focus me hota hai
+           -> jo element focusable nhi hai tab focuasable banane ke lie <h1 tabindex="0"> Content </h1>
+           
+           1. kryup
+           2. keydown
+           3. keypress
+
+           1. keyup
+              -> key click kar ke chhodne pe work karta hai
+              -> ye almost sabpe work karta hai
+                1. Letters: a, b, c
+                2. Numbers: 1, 2, 3
+                3. Special keys: Alt, Ctrl, Shift
+                4. Arrow keys: ↑ ↓ ← →
+                5. Function keys: F1–F12
+                6. Enter, Escape, Tab, Backspace
+
+
+           2. keydown
+              -> key click karte ke hi pe work karta hai
+              -> ye almost sabpe work karta hai
+                1. Letters: a, b, c
+                2. Numbers: 1, 2, 3
+                3. Special keys: Alt, Ctrl, Shift
+                4. Arrow keys: ↑ ↓ ← →
+                5. Function keys: F1–F12
+                6. Enter, Escape, Tab, Backspace
+
+           3. keypress 
+              -> jab koi key press hota hai to events fine hota hai 
+              -> event.key -> jo key dabta hai wo aata hai
+              -> shiftKey click karne pe kuchh nhi hota
+              -> agar press kar ke chhod de to multiple time press hoga key
+                -> isn sab pe keypress work nahi krta hai
+                  1. Alt 
+                  2. Ctrl
+                  3. Shift 
+                  4. Esc
+                  5. Caps Lock
+                  6. Tab
+                  7. Arrow keys (↑ ↓ ← →)
+                  8. Function keys (F1–F12)
+                  9. Windows key
+          
+          
+          :::Mouse Events:::
+              1. click -> click complete hone ke bad hi fire hoga
+              2. dblclick -> double click
+              3. mousedown -> lrftButton 
+              4. mouseup -> leftButton
+              5. mouseenter -> isme click krne ka need nhi hota bs mouse cursore element pe jayega or kaam ho jayega
+              6. mouseleave -> isme click krne ka need nhi hota bs mouse cursore element leav karega or kaam ho jayega 
+              7. mousemove -> amazing  
+              8. mouseout ->
+              9. mouseover ->
+              10. wheel ->
+              11. scroll ->
+
+
+          :::Mobile:::
+              1. touchstart
+              2. touchend
+              3. touchmove
+
+          :::Only for Desktop:::
+              1. drag 
+                  -> we will have to write draggable = "true" in html element
+          
+
+          :::Pointer Events => Mobile + Desktop :::
+              1. pointermove 
+              2. pointerenter
+              3. pointeleave
+
+          :::Resize Events:::
+              ->The resize event occurs when the browser window changes its size. It is attached to the window object and is commonly used for responsive behavior, recalculations, and layout adjustments.
+                1. window.addEventListener("resize", ...)
+                    -> console.log("Width:", window.innerWidth);
+                    -> console.log("Height:", window.innerHeight);
+
+              
+
+
+     .=event object -> it's represent event object
+     .=event.target -> it represent evented element of html
+      
+
+     */
+
+    //Keyboard Events
+
+    const h1 = document.querySelector("#h1");
+    window.addEventListener("keyup", (e) => {
+      console.log(`${e.key} : ${e.code}`);
+    });
+
+    //Mouse Events
+    let num = 1;
+
+    // document.querySelector("span").addEventListener("pointermove", (e) => {
+    //   let addDiv = document.createElement("div");
+
+    //   addDiv.innerText = num++;
+    //   document.querySelector(".container").appendChild(addDiv);
+    // });
+
+    /*📌 Event simulation
+    when We want to repeat event of aparticular element so we use event simulation
+    */
+
+    document.querySelector("span").addEventListener("click", (e) => {
+      for (let i = 0; i <= 10; i++) {
+        let addDiv = document.createElement("div");
+
+        addDiv.innerText = num++;
+        document.querySelector(".container").appendChild(addDiv);
+      }
+
+      //📌Event Delegation
+      let container = document.querySelector(".container");
+      container.addEventListener("click", (e) => {
+        if (e.target != container) e.target.remove();
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Check</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: cursive;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        text-align: center;
+        font-size: 20px;
+        background-color: #dcddff;
+      }
+      .container {
+        display: grid;
+        place-items: center;
+      }
+
+      .ans {
+        border: 1px solid black;
+        font-size: 50px;
+        padding: 30px;
+        text-align: center;
+        border-radius: 30px;
+        margin-bottom: 10px;
+        background-color: #ffabab;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="ans">?</p>
+      <p>Press the key and watch magic</p>
+    </div>
+  </body>
+
+  <script>
+    document.addEventListener("keydown", (e) => {
+      document.querySelector(".ans").innerText = `${e.key}: ${e.code}`;
+      console.log(e.code);
+    });
+  </script>
+</html>

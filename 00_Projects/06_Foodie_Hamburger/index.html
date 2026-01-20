@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Foodie Hamburger</title>
+  </head>
+  <body>
+    <header class="nav-bar" id="top">
+      <div class="container">
+        <div class="nav-image">
+          <img
+            src="./images/foodie hamburger logo.svg"
+            alt="foodie hamburger logo"
+          />
+        </div>
+        <!-- nav-content-mobile -->
+        <div class="nav-content">
+          <img
+            src="./images/hamburger-list-menu-svgrepo-com.svg"
+            alt="list-menu-icon"
+            class="list-menu-icon"
+          />
+
+          <ul>
+            <img
+              src="./images/cross-circle-svgrepo-com.svg"
+              alt="cross icon"
+              class="list-menu-remover"
+            />
+            <li class="bp"><a href="#01">Top Picks</a></li>
+            <li class="bp"><a href="#02">Whopper</a></li>
+            <li class="bp"><a href="#03">Stunner Menu</a></li>
+            <li class="bp"><a href="#04">New Foodie Collection</a></li>
+            <li class="bp"><a href="#05">Deal of the Day</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="section-hero">
+      <div class="container">
+        <div class="section-hero--content">
+          <img src="./images/hero-image.svg" alt="group of hero images" />
+          <p class="content-para">Well, You can’t resist anymore!</p>
+        </div>
+      </div>
+    </main>
+
+    <section class="section-top-picks" id="01">
+      <div class="container">
+        <h2 class="heading">Top Picks</h2>
+        <img
+          src="./images/Top Picks.svg"
+          alt="Top Picks"
+          class="top-picks-image common-section--image"
+        />
+      </div>
+    </section>
+
+    <section class="section-whopper" id="02">
+      <div class="container">
+        <h2 class="heading">Whopper</h2>
+        <img
+          src="./images/Whopper.svg"
+          alt="Whopper"
+          class="whopper-image common-section--image"
+        />
+      </div>
+    </section>
+
+    <section class="section-stunner-menu" id="03">
+      <div class="container">
+        <h2 class="heading">Stunner Menu</h2>
+        <img
+          src="./images/Stunner Menu.svg"
+          alt="Stunner Menu"
+          class="stunner-menu-image common-section--image"
+        />
+      </div>
+    </section>
+
+    <section class="section-new-foodie-collection" id="04">
+      <div class="container">
+        <h2 class="heading">New Foodie Collection</h2>
+        <img
+          src="./images/New Foodie Collection.svg"
+          alt="New Foodie Collection"
+          class="new-foodie-collection-image common-section--image"
+        />
+      </div>
+    </section>
+
+    <section class="section-deal-of-the-day" id="05">
+      <div class="container">
+        <h2 class="heading">Deal of the Day</h2>
+        <img
+          src="./images/Deal of the Day.svg"
+          alt="Deal of the Day"
+          class="deal-of-the-day-image common-section--image"
+        />
+      </div>
+    </section>
+
+    <div class="container"><a href="#top" class="go-to-top">Go to Top</a></div>
+
+    <p class="made-with">Made with ❤️ by Aman</p>
+  </body>
+
+  <script>
+    window.addEventListener("resize", (e) => {
+      if (window > 800)
+        document
+          .querySelector(".nav-content")
+          .classList.remove("nav-content-mobile");
+    });
+
+    document.querySelector(".list-menu-icon").addEventListener("click", (e) => {
+      document
+        .querySelector(".nav-content")
+        .classList.add("nav-content-mobile");
+    });
+
+    document
+      .querySelector(".list-menu-remover")
+      .addEventListener("click", (e) => {
+        document
+          .querySelector(".nav-content")
+          .classList.remove("nav-content-mobile");
+      });
+  </script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Chai aur JavaScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    /*
+    📌setInterval:-
+        -> Executes a function repeatedly after a fixed time delay.
+        -> setInterval(function, timeInMilliseconds);
+
+
+    📌clearInterval:-
+        -> Stops a running interval created by setInterval() using its ID.
+        -> clearInterval(intervalId);
+
+    */
+
+    let intervalId;
+    document.querySelector("#start").addEventListener("click", () => {
+      intervalId = setInterval(() => {
+        console.log("Time: ", Date.now());
+      }, 1000);
+    });
+
+    document.querySelector("#stop").addEventListener("click", () => {
+      clearInterval(intervalId);
+    });
+  </script>
+</html>

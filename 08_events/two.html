@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    /*
+    📌setTimeout():- setTimeout() is a JavaScript function that is used to run a piece of code after a fixed delay (time) -> it generate ID.
+
+    📌cleatTimeout():- clearTimeout() cancels a scheduled setTimeout() before it executes by using its timeout ID.
+    */
+    const sayAman = function () {
+      console.log("Aman");
+    };
+
+    const changeText = function () {
+      document.querySelector("h1").innerText = "Best JS Course";
+    };
+
+    const changeMe = setTimeout(changeText, 2000);
+
+    document.querySelector("#stop").addEventListener("click", () => {
+      clearTimeout(changeMe);
+      console.log("STOPPED");
+    });
+
+
+
+
+    /*<-|:::Synchronous and Asychronous:::|->
+        -> JS is Single thread
+        -> Anychronous JS -> It doesn't follow linear or anynchronous code doesn't use call stack
+    */
+  </script>
+
+</html>
