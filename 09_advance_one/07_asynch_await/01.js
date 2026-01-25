@@ -1,24 +1,25 @@
-async function makRequest() {
-  const url = "https://dummyjson.com/products";
+async function makeAsyncRequest() {
+  const url = "//localhost:5000/api/data?delay=5000";
 
-  const response = fetch(url);
-
-  console.log(response);
-
-  // response.then((res) => res.json()).then((data) => console.log(data));
-
-  setTimeout()
-
-  console.log(response);
-  console.log(response);
-  console.log(response);
-  console.log(response);
-  console.log(response);
-  console.log(response);
-  console.log(response);
-  console.log(response);
-  console.log(response);
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
 }
+/*
+↪ Use difference thread 
+↪ The data that is sent by fetch is not promise data and is not actual data
+↪ We can not use of wait keyword outside of async function body
+*/
 
-makRequest();
-console.log("aman");
+function makeSyncRequest() {
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", () => {
+    console.log(xhr);
+  });
+
+  xhr.open("get", "//localhost:5000/api/data?delay=5000", false);
+
+  xhr.send();
+}
+//↪ Use main thread
+//↪ Freez Browser
