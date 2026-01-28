@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="search-bar">
+        <svg
+          class="search-logo"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+              stroke="#f6fbff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+        <input
+          class="search-input"
+          type="text"
+          placeholder="search your city..."
+        />
+      </div>
+
+      <div class="weather-card">
+        <h2 class="location">London, United Kingdom</h2>
+        <p class="date">Friday, February 23, 2024 at 10:37 AM</p>
+        <span class="badge">Clouds</span>
+        <div class="icon sunny">
+          <img src="./images/rainy.svg" id="rainy" />
+          <img src="./images/foggy.svg" id="foggy" />
+          <img src="./images/snow.svg" id="snowy" />
+          <img src="./images/sunny.svg" id="sunny" />
+          <img src="./images/thunder.svg" id="stormy" />
+          <img src="./images/windy.svg" id="windy" />
+          <img src="./images/cloudy.svg" id="cloudy" />
+        </div>
+        <h3 class="temp">278°</h3>
+        <div class="min-max">
+          <p>Min:<span class="min">277°</span></p>
+          <p>Max:<span class="max">279°</span></p>
+        </div>
+      </div>
+
+      <div class="weather-details">
+        <div class="weather-deatils-div feels-like">
+          <img src="./images/temperature-high-svgrepo-com.svg" alt="" />
+
+          <div>
+            <p class="pd">Feels Like</p>
+            <p id="feels-like-value">275</p>
+          </div>
+        </div>
+
+        <div class="weather-deatils-div humidity">
+          <img
+            src="./images/humidity-air-conditining-ac-conditioner-split-ac-indoor-ac-svgrepo-com.svg"
+            alt=""
+          />
+
+          <div>
+            <p class="pd">Humidity</p>
+            <p id="humidity-value">89%</p>
+          </div>
+        </div>
+
+        <div class="weather-deatils-div wind">
+          <img src="./images/wind-03-svgrepo-com.svg" alt="" />
+
+          <div>
+            <p class="pd">Wind</p>
+            <p id="wind-value">3.58 m/s</p>
+          </div>
+        </div>
+
+        <div class="weather-deatils-div pressure">
+          <img src="./images/gauge-high-svgrepo-com.svg" alt="" />
+
+          <div>
+            <p class="pd">Pressure</p>
+            <p id="feels-like-value">983 hPa</p>
+          </div>
+        </div>
+      </div>
+
+      <div></div>
+    </section>
+  </body>
+</html>

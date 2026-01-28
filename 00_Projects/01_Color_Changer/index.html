@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Color Changer</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        padding: 24px;
+        text-align: center;
+        background-color: #e7f7ff;
+        font-family: "Urbanist", sans-serif;
+      }
+
+      .container {
+        margin: 150px auto;
+        max-width: 800px;
+        border: 2px solid black;
+        padding: 48px 24px;
+        border-radius: 12px;
+        background-color: #fff;
+        & .heading {
+          margin-bottom: 42px;
+          /* border: 2px solid black; */
+          padding: 10px;
+          border-radius: 12px;
+          display: inline-block;
+        }
+
+        & .buttons {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 28px;
+          padding-bottom: 21px;
+
+          & .button {
+            width: 120px;
+            aspect-ratio: 1;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s linear;
+            border: 2px solid black;
+           box-shadow: 1px 1px rgb(255, 255, 255);
+            &:hover {
+              scale: 1.1;
+            }
+          }
+
+          & .button:nth-child(1) {
+            background-color: #ff8e8e;
+          }
+          & .button:nth-child(2) {
+            background-color: #80e8ff;
+          }
+          & .button:nth-child(3) {
+            background-color: #5b53ff;
+          }
+          & .button:nth-child(4) {
+            background-color: #5fff6f;
+          }
+        }
+
+        & button {
+          font-family: "Urbanist", sans-serif;
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        & h2 {
+          font-size: 20px;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">Color Scheme Switcher</h1>
+      <div class="buttons">
+        <button class="button" id="#ff8e8e">Light Red</button>
+        <button class="button" id="#80e8ff">Light Blue</button>
+        <button class="button" id="#5b53ff">Violet Blue</button>
+        <button class="button" id="#5fff6f">Light Green</button>
+      </div>
+      <h2>
+        Try clicking on one of the colors above
+        <span>to change the background color of this page!</span>
+      </h2>
+    </div>
+  </body>
+
+  <script>
+    const button = document.querySelectorAll(".button");
+    console.log(button);
+
+    const container = document.querySelector(".container");
+    const body = document.querySelector("body");
+
+    button.forEach((btn) => {
+      console.log(btn);
+
+      btn.addEventListener("click", (event) => {
+        console.log(event);
+        console.log(event.target);
+
+        body.style.backgroundColor = event.target.id;
+
+        switch (event.target.id) {
+          case "#ff8e8e":
+            container.style.backgroundColor = "#ffd8d8";
+            break;
+
+          case "#80e8ff":
+            container.style.backgroundColor = "#c9f5ff";
+            break;
+
+          case "#5b53ff":
+            container.style.backgroundColor = "#c6c3ff";
+            break;
+
+          case "#5fff6f":
+            container.style.backgroundColor = "#c3ffc9";
+            break;
+        }
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unlimited Color</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: cursive;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 50px;
+        background-color: rgb(255, 175, 175);
+      }
+
+      div {
+        border: 1px solid black;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: #ffffff50;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        &:hover {
+          scale: 1.1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="start">Start</div>
+    <div id="stop">Stop</div>
+  </body>
+
+  <script>
+
+    function randomColor() {
+      let red = Math.floor(Math.random() * 256);
+      let green = Math.floor(Math.random() * 256);
+      let blue = Math.floor(Math.random() * 256);
+      return `rgb(${red}, ${green}, ${blue})`;
+    }
+
+    let id;
+
+    document.querySelector("#start").addEventListener("click", () => {
+      id = setInterval(() => {
+        document.body.style.backgroundColor = randomColor();
+      }, 1500);
+    });
+
+    document.querySelector("#stop").addEventListener("click", () => {
+      clearInterval(id);
+      id = null;
+    });
+  </script>
+</html>

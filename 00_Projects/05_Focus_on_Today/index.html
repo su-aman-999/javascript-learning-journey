@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Focus on Today</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f6fff8;
+      }
+
+      .container {
+        max-width: 84rem;
+        margin: auto;
+        border-radius: 1.2rem;
+        padding: 0 4.8rem;
+
+        & .heading {
+          text-align: center;
+          font-size: 4rem;
+          margin: 1.2rem 0;
+          color: #008b25;
+          font-weight: 800;
+
+          & span {
+            color: #281500;
+          }
+        }
+
+        & .content {
+          width: 54rem;
+          border-radius: 1.2rem;
+          padding: 0 3.6rem;
+          box-shadow: 0px 0px 2rem 0rem rgba(0, 0, 0, 0.3);
+          margin: auto;
+
+          background-color: #eaffef;
+
+          & .sub-heading {
+            font-size: 2.4rem;
+            padding-top: 2.4rem;
+
+            & img {
+              width: 4.4rem;
+              vertical-align: middle;
+              margin-left: -1rem;
+            }
+          }
+
+          & .msg {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #838383;
+          }
+
+          & .progress-bar {
+            height: 2.4rem;
+            width: 100%;
+            background-color: #aeffc4;
+            border-radius: 5rem;
+            margin-top: 2.4rem;
+
+            & .progress-bar-content {
+              height: 2.4rem;
+              width: 0%;
+              background-color: #008b25;
+              border-radius: 5rem;
+            }
+          }
+
+          & .error-msg {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #e50000;
+            padding: 0.8rem 0;
+            position: absolute;
+          }
+          & .goal-1 {
+            margin-top: 4.8rem;
+          }
+
+          & .goal-section {
+            height: 6rem;
+            border: 0.2rem solid rgb(218, 218, 218);
+            display: flex;
+            margin-bottom: 1.4rem;
+            align-items: center;
+            border-radius: 12px;
+            padding: 0 1.2rem;
+            background-color: #ffffff;
+
+            & .goal-section--input {
+              width: 100%;
+              padding: 1.2rem;
+              border: none;
+              outline: none;
+              border-radius: 12px;
+              background-color: transparent;
+              font-family: "Poppins", sans-serif;
+              font-weight: 500;
+              font-size: 1.4rem;
+
+              &::placeholder {
+                color: #d9d9d9;
+              }
+            }
+
+            & .goal-section--circle {
+              border: 0.2rem solid #61481c4d;
+              width: 2.4rem;
+              aspect-ratio: 1;
+              border-radius: 50%;
+              display: grid;
+              place-items: center;
+              & img {
+                display: none;
+              }
+            }
+          }
+
+          & .goal-completed {
+            & .goal-section--circle {
+              border: #008b25;
+              & img {
+                display: inline;
+              }
+            }
+
+            & .goal-section--input {
+              color: #008b25;
+              text-decoration: line-through;
+              font-weight: 600;
+            }
+          }
+
+          & .bottom-msg {
+            text-align: center;
+            margin-top: 2.8rem;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #000000;
+          }
+
+          & .create-by-aman {
+            text-align: center;
+            margin-top: 3.2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #858585;
+            padding-bottom: 2.4rem;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">Focus on <span>Today</span></h1>
+      <div class="content">
+        <h2 class="sub-heading">
+          Today
+          <img src="./flower.svg" alt="there is a flower" />
+        </h2>
+
+        <p class="msg">Raise the bar by completing your goals!</p>
+
+        <div class="progress-bar">
+          <div class="progress-bar-content"></div>
+        </div>
+
+        <p class="error-msg"></p>
+
+        <div class="goal-section goal-1">
+          <span class="goal-section--circle"
+            ><img src="./tick.svg" alt="" width="100%" height="100%"
+          /></span>
+          <input
+            type="text"
+            placeholder="Add new goal..."
+            class="goal-section--input"
+            id="input-1"
+          />
+        </div>
+
+        <div class="goal-section goal-2">
+          <span class="goal-section--circle"
+            ><img src="./tick.svg" alt="" width="100%" height="100%"
+          /></span>
+          <input
+            type="text"
+            placeholder="Add new goal..."
+            class="goal-section--input"
+            id="input-2"
+            value=""
+          />
+        </div>
+
+        <div class="goal-section goal-3">
+          <span class="goal-section--circle"
+            ><img src="./tick.svg" alt="" width="100%" height="100%"
+          /></span>
+          <input
+            type="text"
+            placeholder="Add new goal..."
+            class="goal-section--input"
+            id="input-3"
+            value=""
+          />
+        </div>
+
+        <p class="bottom-msg">“Move one step ahead, today!”</p>
+
+        <p class="create-by-aman">Made with ❤️ by Su. Aman</p>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const errorMgs = document.querySelector(".error-msg");
+    const ticks = document.querySelectorAll(".goal-section--circle");
+    const progress = document.querySelector(".progress-bar-content");
+    let completedTasks = 0;
+    ticks.forEach((tick, i) => {
+      tick.addEventListener("click", (evt) => {
+        inputBox = evt.target.parentElement.querySelector(
+          ".goal-section--input"
+        );
+        if (inputBox) {
+          if (inputBox && inputBox.value.trim() != "") {
+            evt.target.parentElement.classList.toggle("goal-completed");
+            progress.style.width = `${++completedTasks * 33.33}%`;
+
+            if (completedTasks === 3) {
+              document.querySelector(".bottom-msg").innerHTML =
+                "“Keep Going, You’re making great progress!”";
+            }
+          } else {
+            errorMgs.innerText = "Please set all the 3 goals!";
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll(".goal-section--input").forEach((input) => {
+      input.addEventListener("click", () => {
+        errorMgs.innerHTML = "";
+      });
+    });
+
+    /*👉Learning
+      Que1. Hoq can I access siblings through current element
+        1. currentElemet.previousElementSibling
+        2. currentElement.nextElementSibling
+        3. parentElement
+
+
+        👉 DOMTokenList (Short Notes)
+
+          DOMTokenList ek object hota hai jo
+          element ke space-separated tokens ko handle karta hai.
+
+          Example:
+          element.classList  → returns DOMTokenList
+
+          Common Methods:
+          add()      → class add karta hai
+          remove()   → class remove karta hai
+          toggle()   → add/remove automatically
+          contains() → class exist karti hai ya nahi
+          replace()  → ek class ko dusri se replace
+
+          Example:
+          box.classList.toggle("active");
+
+          Shortcut:
+          classList = DOMTokenList
+
+
+        👉Number → String
+          String(num)
+          num.toString()
+          num + ""
+          `${num}`
+          JSON.stringify(num)
+
+
+        👉DOMTokenList Live Reference Confusion
+            classList (DOMTokenList) ek live object hota hai. console.log(element.classList) browser console me reference log karta hai, value ka snapshot nahi. Isliye baad me JS se class add/remove hone par pehle ke logs expand karne par updated classes dikh jati hain. Lekin classList.contains() usi execution moment ki actual state check karta hai. Isi wajah se console me class dikhne ke bawajood contains() kabhi false return kar deta hai. Is problem se bachne ke liye class add/remove ke baad check karein aur debugging ke liye snapshot log karein: console.log([...element.classList]) ya element.classList.value.
+    */
+
+    /* 
+   =====================================================
+       PROBLEM: evt.target.nextElementSibling issue
+   =====================================================
+
+    Problem:
+    - First click pe code kaam karta hai
+    - Second click pe evt.target.nextElementSibling null ho jata hai
+
+    Reason:
+    - evt.target = actual clicked element
+    - Agar element ke andar child ho (img, svg etc.)
+      → kabhi parent pe click hota hai
+      → kabhi child pe click hota hai
+
+    DOM Example:
+    div
+    ├─ span (event listener yahan laga hai)
+    │   └─ img (actual click yahan hota hai)
+    └─ input
+
+    First Click:
+    - evt.target === span
+    - span.nextElementSibling === input ✔
+
+    Second Click:
+    - evt.target === img
+    - img.nextElementSibling === null ❌
+
+    Isliye problem random lagti hai,
+    but actually click location change hoti hai.
+
+    ❌ Wrong Approach:
+    evt.target.nextElementSibling
+
+    ✅ Correct Approaches:
+
+    1) Use currentTarget (BEST)
+    evt.currentTarget.parentElement
+      .querySelector(".goal-section--input");
+
+    2) Use closest()
+    evt.target.closest(".goal-section--circle")
+      .nextElementSibling;
+
+    Golden Rule:
+    Never trust evt.target when child elements exist.
+    Always use evt.currentTarget or parent-based selector.
+
+    ===================================================== */
+  </script>
+</html>

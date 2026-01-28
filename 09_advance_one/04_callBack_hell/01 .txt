@@ -1,0 +1,34 @@
+>>=|:::Callback Hell:::|=>>
+    🎯 Interview-Ready Definition
+        Callback Hell is a situation where multiple nested callbacks make JavaScript code hard to read, debug, and maintain. It commonly occurs in asynchronous operations.
+    Callback Hell happens when callbacks are nested inside callbacks inside callbacks…
+        1. Hard to read
+        2. Hard to debug
+        3. Hard to maintain
+
+    This structure is also called 
+        -> “Pyramid of Doom”
+            loginUser(user, () => {
+                getUserProfile(user, () => {
+                    getUserPosts(user, () => {
+                        getPostComments(post,   () => {
+                            console.log("All data loaded");
+                        });
+                    });
+                });
+            });
+
+    🚨 Why Callback Hell is a BIG Problem?
+        1️⃣ Code Readability ❌
+        2️⃣ Error Handling ❌
+        3️⃣ Debugging ❌
+        4️⃣ Maintainability ❌
+    
+
+    ⚖️ Comparison Table
+        | Feature        | Callback Helln | Promises  | async/await     |
+        | -------------- | -------------- | --------- | --------------- |
+        | Readability    | ❌ Very bad    | ✅ Good   | ⭐ Excellent   |
+        | Error Handling | ❌ Hard        | ✅ Easy   | ⭐ Very easy   |
+        | Debugging      | ❌ Hard        | ✅ Better | ⭐ Best        |
+        | Modern Use     | ❌ Avoid       | ✅ Yes    | ⭐ Recommended |

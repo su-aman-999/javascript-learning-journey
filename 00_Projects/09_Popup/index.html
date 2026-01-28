@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Popup</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Jost", sans-serif;
+        font-size: 18px;
+        background-image: url("./wp9160786-nature-dark-4k-wallpapers.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: top;
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .container {
+        max-width: 980px;
+        margin: auto;
+      }
+
+      header {
+        background-color: rgba(255, 255, 255, 0.2);
+        & .header-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          height: 94px;
+          padding: 0 48px;
+        }
+        & .brand-name {
+          background-color: rgba(124, 255, 251, 0.5);
+          padding: 4px 18px;
+          font-weight: 600;
+          border-radius: 50px;
+          color: black;
+        }
+
+        & .popup-button {
+          width: 45px;
+          aspect-ratio: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          transition: all 0.3s linear;
+          cursor: pointer;
+          background-color: rgba(124, 255, 251, 0.6);
+
+          &:hover {
+            scale: 1.1;
+            box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2);
+          }
+          & img {
+            width: 25px;
+          }
+        }
+      }
+
+      & .all-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        margin-top: 24px;
+        gap: 24px;
+        & .main-content {
+          border: 1px solid black;
+          border-radius: 12px;
+          overflow: hidden;
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .popp {
+
+       display: none;
+        transition: transform .3s ease-in;
+      }
+
+      .popup {
+        scale: 1;
+        display: block;
+        position: fixed;
+        inset: 0;
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.2);
+        width: 550px;
+        height: 280px;
+        cursor: auto;
+        border-radius: 40px;
+        transition: all 0.3s ease-in;
+      
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        & #popup-image {
+          width: 40%;
+          position: relative;
+          bottom: 15%;
+          left: -3%;
+        }
+
+        & .song-dtails {
+          background-color: rgba(0, 0, 0, 0.9);
+          padding: 15px;
+          max-width: 220px;
+          border-radius: 30px;
+          color: white;
+          text-shadow: 0px 0px 25px black;
+          position: relative;
+          left: 50%;
+          bottom: 70%;
+
+          & span {
+            color: rgb(255, 255, 255);
+          }
+        }
+
+        & .music-player {
+          position: relative;
+          bottom: 50%;
+          left: 8%;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: rgba(0, 0, 0, 0.7);
+
+          & .up {
+            flex-grow: 1;
+            height: 10px;
+            max-width: 350px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 50px;
+
+            & .down {
+              flex-grow: 1;
+
+              width: 50%;
+              height: 10px;
+              background-color: rgba(124, 255, 251, 0.9);
+              border-radius: 50px;
+            }
+          }
+          & h5 {
+            color: rgba(0, 0, 0, 0.9);
+          }
+        }
+
+        & #cross-symbol {
+          width: 30px;
+          background-color: rgba(124, 255, 251, 0.5);
+          border-radius: 50%;
+          position: relative;
+          bottom: 72%;
+          left: 90%;
+          cursor: pointer;
+          transition: all 0.3s linear;
+          &:hover {
+            rotate: 360deg;
+          }
+        }
+
+        
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <h2 class="brand-name">MusicMitra</h2>
+        <div class="popup-button">
+          <img src="./romantic-music-svgrepo-com.svg" />
+        </div>
+      </div>
+    </header>
+
+    <div class="popp">
+      <img src="./cross-circle-svgrepo-com.svg" id="cross-symbol" />
+
+      <img src="./b7ef95103bbc962126f407bcbbfc1fc8.png" id="popup-image" />
+
+      <div class="song-dtails">
+        <h3>Pal Pal Dil Ke Paas</h3>
+        <p><span>Singer: </span>Kishore Kumar</p>
+        <p><span>Movie: </span>Blackmail</p>
+      </div>
+
+      <div class="music-player">
+        <h5>02:45</h5>
+        <div class="up">
+          <div class="down"></div>
+        </div>
+        <h5>05:30</h5>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const popupBotton = document.querySelector(".popup-button");
+    const popUp = document.querySelector(".popp");
+    const removePopup = document.querySelector("#cross-symbol");
+    popupBotton.addEventListener("click", (e) => {
+      if (popUp.classList.contains("popup")) popUp.classList.remove("popup");
+      else popUp.classList.add("popup");
+
+      e.stopPropagation();
+    });
+
+    window.addEventListener("click", () => {
+      if (popUp.classList.contains("popup")) popUp.classList.remove("popup");
+    });
+
+    removePopup.addEventListener("click", () => {
+      popUp.classList.remove("popup");
+    });
+  </script>
+</html>

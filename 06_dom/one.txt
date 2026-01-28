@@ -1,0 +1,94 @@
+
+=|:::All Dom Slector Nodelist and HTML Collection:::|=
+
+Dom Selectors:-
+1. document.getElementById("idName")
+
+    document.getElementById("id").id => "myId"
+    document.getElementById("id").className => "myClass"
+    document.getElementById("id").getAttribute()
+    document.getElementById("id").getAttribute("id") => myId
+
+    document.getElementById("id").setAttribute("class", "myClass2")
+        👉it do always override of exitance class
+    
+    const myId = document.getElementById("id")
+        myId.style.backgroundColor = "green";
+        myId.style.padding = "15px";
+        myId.style.borderRadius = "15x";
+        
+        📌myId.textContent
+            👉kisi element ke andar ka poora text return karta hai, chahe wo screen pe dikhe ya nahi.
+
+        📌myId.innerText
+            👉sirf wahi text deta hai jo user ko screen pe dikh raha ho.
+        
+        📌myId.innerHTML
+            👉element ke andar ka HTML + text dono ko read/write karta hai.
+
+        myId.innerText => main to visible hu😊 but
+
+        myId.textContent => main to visble hu😊 but main to unvisible hu😥
+
+        myId.innerHTML => main to visible hu😊 but <span style = "sidplay: none;"> main to unvisible hu😥 <span>  
+
+
+
+
+
+2. document.querySelector()
+    1. document.querySelector('h2')
+        👉 return first h1
+
+    2. document.querySelector('#idName')
+
+    3. document.querySelector('.className')
+
+    4. document.querySelector('input[type = "password"]')
+
+    5. document.querySelector('p:first-child')
+    
+    6. document.querySelector('ul')
+        const myUl = document.querySelector('ul')
+
+        const firstItem = myUl.querySelector('li')
+        firstItem.style.backgroundColor = 'green';
+        firstItem.innerText = "change the inner text"
+
+
+3. document.querySelectorAll()
+
+    const allList = document.querySelectorAll('li') =>return NodeList
+        👉NodeList and HTML Collection are not pure array.
+        👉NodeList has forEach()
+        👉We cann't apply style directly on node list.
+
+        allList[0].style.color = "blue";
+
+        allList.foreach( (li) => {
+            li.style.backgroundColor = 'green';
+        } )
+
+
+4. document.getElementByClassName('className')
+
+    const myClass = document.getElementByClassName => ("callName") return HTML Collection
+        👉NodeList and HTML Collection both are different
+        👉HTML Collection dosn't has forEach 
+
+    const myclassArray = Array.from(myClass)
+    myClassArray.forEach( (li) => {
+        li.style.color = 'orange';
+    } )
+
+
+
+
+
+    
+
+
+
+
+
+

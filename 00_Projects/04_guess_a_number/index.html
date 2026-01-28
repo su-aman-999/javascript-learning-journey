@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Guess Number</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Urbanist", sans-serif;
+        font-size: 18px;
+        background-color: #eaf4fc;
+      }
+
+      input,
+      button {
+        font-size: 18px;
+      }
+
+      .container {
+        width: 600px;
+        margin: 60px auto;
+        text-align: center;
+        border: 1px solid black;
+        padding: 20px;
+        border-radius: 10px;
+        background: #dee6ff;
+        background: linear-gradient(
+          130deg,
+          rgba(222, 230, 255, 1) 0%,
+          rgba(224, 255, 224, 1) 100%
+        );
+
+        & .heading {
+          padding-bottom: 42px;
+        }
+
+        & .game-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 34px;
+
+          & #input-number {
+            margin-bottom: 12px;
+            padding: 8px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid black;
+            min-width: 230px;
+          }
+
+          & #btn {
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            background-color: #03001c;
+            transition: all 0.1s linear;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #dee6ff;
+
+            &:hover {
+              scale: 1.1;
+            }
+          }
+        }
+
+        & .guesses {
+          margin-bottom: 12px;
+          & .prev-guess-num {
+            /* border: 1px solid black; */
+            padding: 4px ;
+            border-radius: 8px;
+            margin-right: 5px;
+
+            background-color: rgb(0, 37, 106);
+            color: white;
+          }
+        }
+
+        & .guesses-remaining {
+          & #guess-remain-num {
+            border: 1px solid black;
+            background-color: black;
+            padding: 4px 10px;
+            border-radius: 8px;
+            width: 30px;
+            color: white;
+          }
+
+          margin-bottom: 24px;
+        }
+
+        & .ans {
+          border: 1px solid black;
+          padding: 10px 30px;
+          border-radius: 10px;
+          background-color: rgb(185, 241, 255);
+          font-weight: 500;
+          letter-spacing: 0.5px;
+        }
+
+        & fieldset {
+          margin-top: 42px;
+          padding: 20px 0px 20px 40px;
+          border: 1px solid black;
+          border-radius: 10px;
+          text-align: left;
+          line-height: 30px;
+          font-weight: 500;
+          background-color: #f8f8ff;
+
+          & legend {
+            padding: 0 5px;
+            font-weight: 700;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">Guess a Number</h1>
+
+      <div class="game-content">
+        <input
+          type="number"
+          placeholder="enter guessing number"
+          id="input-number"
+          max="10"
+          min="0"
+        />
+        <button id="btn">Submit Guess</button>
+      </div>
+
+      <div class="guesses">
+        <span>Previus Guesses: </span>
+      </div>
+
+      <div class="guesses-remaining">
+        <span>Guesses Remaining:</span>
+        <span id="guess-remain-num"> 10 </span>
+      </div>
+
+      <span class="ans">Ans:-</span>
+      <span class="final-ans"></span>
+
+      <button class="re-start-btn"></button>
+
+      <fieldset>
+        <legend>Instruction</legend>
+        <ul>
+          <li>Try and guess a ramdom number between 1 and 100.</li>
+          <li>You have 10 attemempts to guess the right number.</li>
+        </ul>
+      </fieldset>
+    </div>
+  </body>
+
+  <script>
+    const submitBtn = document.querySelector("#btn");
+    const num = Math.floor(Math.random() * 100 + 1);
+    const ansArea = document.querySelector(".ans");
+    const finalAnsArea = document.querySelector(".final-ans");
+    const reStartBtn = document.querySelector(".re-start-btn");
+    console.log(num);
+
+    const chance = document.querySelector("#guess-remain-num");
+
+    submitBtn.addEventListener("click", () => {
+      if (Number(chance.textContent) != 0) {
+        const userNum = Number(document.querySelector("#input-number").value);
+
+        console.log(userNum);
+
+        prevNum = document.createElement("span");
+        prevNum.className = "prev-guess-num";
+        prevNum.textContent = userNum;
+
+        document.querySelector("#input-number").value = "";
+
+        if (userNum === 0 || userNum < 1 || userNum > 100) {
+          alert("Enter valid numbet");
+        } else {
+          document.querySelector(".guesses").appendChild(prevNum);
+          if (num === userNum) {
+            console.log("aman");
+            ansArea.textContent = "Right Guess";
+            ansArea.style.backgroundColor = "rgb(108, 255, 135)";
+
+            finalAnsArea.textContent = `“Maza aa gaya!”`;
+            finalAnsArea.style.fontWeight = "600";
+            finalAnsArea.style.letterSpacing = "0.5px";
+            finalAnsArea.style.display = "block";
+            finalAnsArea.style.marginTop = "24px";
+            finalAnsArea.style.color = "rgb(0, 170, 255)";
+
+            reStartBtn.style.display = "block";
+            reStartBtn.style.margin = "auto";
+            reStartBtn.style.marginTop = "36px";
+            reStartBtn.textContent = "Restart Game";
+            reStartBtn.style.padding = "10px 30px";
+            reStartBtn.style.borderRadius = "10px";
+            reStartBtn.style.border = "1px solid black";
+            reStartBtn.style.backgroundColor = "rgb(13, 56, 0)";
+            reStartBtn.style.color = "white";
+            reStartBtn.style.fontFamily = `"Urbanist", sans-serif`;
+            reStartBtn.style.letterSpacing = "1px";
+          } else {
+            chance.textContent = chance.textContent - 1;
+            ansArea.textContent = "Wornge Guess";
+            ansArea.style.backgroundColor = "rgb(255, 104, 104)";
+          }
+        }
+      } else {
+        ansArea.textContent = `Guessing Number: ${num}`;
+        ansArea.style.backgroundColor = "rgb(199, 185, 255)";
+
+        finalAnsArea.textContent = `Game Over! Try again 💪`;
+        finalAnsArea.style.fontWeight = "600";
+        finalAnsArea.style.letterSpacing = "0.5px";
+        finalAnsArea.style.display = "block";
+        finalAnsArea.style.marginTop = "24px";
+        finalAnsArea.style.color = "red";
+
+        reStartBtn.style.display = "block";
+        reStartBtn.style.margin = "auto";
+        reStartBtn.style.marginTop = "36px";
+        reStartBtn.textContent = "Restart Game";
+        reStartBtn.style.padding = "10px 30px";
+        reStartBtn.style.borderRadius = "10px";
+        reStartBtn.style.border = "1px solid black";
+        reStartBtn.style.backgroundColor = "rgb(13, 56, 0)";
+        reStartBtn.style.color = "white";
+        reStartBtn.style.fontFamily = `"Urbanist", sans-serif`;
+        reStartBtn.style.letterSpacing = "1px";
+      }
+    });
+
+    reStartBtn.addEventListener("click", () => {
+      location.reload();
+    });
+  </script>
+</html>

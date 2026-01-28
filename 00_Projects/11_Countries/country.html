@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./country.js" defer></script>
+    <title>Countries</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content container">
+        <h1 class="header-logo">
+          <a href="./index.html"> Where in the world?</a>
+        </h1>
+
+        <h3 class="header-mode">
+          <i class="fa-regular fa-moon"></i>Dark Mode
+        </h3>
+      </div>
+    </header>
+
+
+
+    <main>
+      <div class="container">
+        <a class="back-btn" href="./index.html"
+          ><i class="fa-solid fa-arrow-left-long"></i>&nbsp;&nbsp;Back</a
+        >
+
+
+
+        <div class="country-more-content">
+          <div class="more-content--flag">
+            <img src="" alt="" />
+          </div>
+
+
+          <div class="more-content--details">
+            <h3 class="country-name"></h3>
+            <div class="country-informations">
+              <div class="country-informations--left">
+                <p id="native-name"></p>
+                <p id="population"></p>
+                <p id="region"></p>
+                <p id="sub-region"></p>
+                <p id="capital"></p>
+                <p id="timezone"></p>
+                <p id="area"></p>
+              </div>
+              <div class="country-informations--right">
+                <p id="tld"></p>
+                <p id="currencies"></p>
+                <p id="languages"></p>
+                <p id="continents"></p>
+              </div>
+            </div>
+
+
+            <div class="country-border">
+              <p id="borders">
+                <span>Border Countries: </span>
+              </p>
+            </div>
+          </div>
+
+    </main>
+  </body>
+</html>
