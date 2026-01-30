@@ -1,5 +1,4 @@
 const countryName = new URLSearchParams(location.search).get("name");
-
 const countryFlag = document.querySelector(".more-content--flag img");
 const commonCountryName = document.querySelector(".country-name");
 
@@ -19,6 +18,8 @@ const countryBorders = document.querySelector("#borders");
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
   .then((res) => res.json())
   .then(([country]) => {
+    console.log(country);
+
     countryFlag.alt = country.flags.alt;
     countryFlag.src = country.flags.svg;
 
@@ -45,7 +46,8 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
         (currencie) => `${currencie.name}(${currencie.symbol})`,
       );
       countryCorrencies.innerHTML = `<span>Currencies: </span>${currencieList.join(", ")}`;
-    } else countryCorrencies.innerHTML = `<span>Currencies: </span>Not Applicable`;
+    } else
+      countryCorrencies.innerHTML = `<span>Currencies: </span>Not Applicable`;
 
     if (country.languages)
       countryLanguages.innerHTML = `<span>Languages: </span>${Object.values(country.languages).join(", ")}`;
@@ -304,14 +306,16 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
       ZMB: "Zambia",
       ZWE: "Zimbabwe",
     };
-  
+
     if (country.borders) {
       country.borders.forEach((borderName) => {
         bdr = document.createElement("a");
-        bdr.innerText = borderName;
+        bdr.innerText = countryNamesAndCodes[borderName];
         bdr.href = `./country.html?name=${countryNamesAndCodes[borderName]}`;
         countryBorders.appendChild(bdr);
       });
     } else
       countryBorders.innerHTML = `<span>Border Countries: </span>No neighboring nations to display`;
   });
+
+

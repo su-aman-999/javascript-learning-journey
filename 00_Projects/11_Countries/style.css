@@ -7,6 +7,31 @@
 html {
   font-family: "Poppins", sans-serif;
   font-size: 62.5%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  
+}
+
+body.light-mode {
+  --bg-color: rgb(255, 255, 255);
+  --element-color: rgb(232, 244, 255);
+  --border-color: rgba(0, 0, 0, 0.2);
+  --border-hover-color: rgba(0, 0, 0, 1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --text-color: black;
+
+  background-color: var(--bg-color);
+}
+body.dark-mode {
+  --bg-color: #121212;
+  --element-color: #1e1e1e;
+  --border-color: rgba(186, 136, 255, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --border-hover-color: rgb(106, 0, 255);
+  --text-color: white;
+  background-color: var(--bg-color);
 }
 
 .container {
@@ -24,29 +49,40 @@ h3 {
   font-size: 1.8rem;
   padding-bottom: 1.2rem;
   font-weight: 600;
+  color: var(--text-color);
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
 }
 
 .header-mode {
   font-size: 1.8rem;
   padding-bottom: 1.2rem;
   font-weight: 600;
+  color: var(--text-color);
+}
+input,
+select {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: var(--text-color);
 }
 
-p {
+p,
+input {
   font-size: 1.4rem;
+  color: var(--text-color);
 }
 span {
   font-weight: 500;
+  color: var(--text-color);
 }
 
 /***** Countries List *****/
 .header {
-  box-shadow: 0 0.2rem 0.8rem 0.1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 0.8rem 0.4rem var(--shadow-color);
   & .header-content {
     display: flex;
     justify-content: space-between;
@@ -59,6 +95,84 @@ span {
   }
 }
 
+.search-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 4.6rem;
+  gap: 0.4rem;
+  & .search {
+    display: flex;
+    align-items: center;
+    border: 0.1rem solid var(--border-color);
+    width: 28rem;
+    padding-left: 1.2rem;
+    background-color: var(--element-color);
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    & .fa-solid {
+      font-size: 1.6rem;
+      color: #969696;
+      transition: all 0.2s ease-in;
+      -webkit-transition: all 0.2s ease-in;
+      -moz-transition: all 0.2s ease-in;
+      -ms-transition: all 0.2s ease-in;
+      -o-transition: all 0.2s ease-in;
+    }
+    & .search-input {
+      display: inline-block;
+      width: 100%;
+      height: 3.8rem;
+      border: none;
+      outline: none;
+      padding-left: 1.2rem;
+      background-color: transparent;
+      &::placeholder {
+        color: #969696;
+      }
+    }
+
+    &:hover {
+      & .fa-solid {
+        scale: 1.4;
+        color: var(--border-hover-color);
+      }
+      border: 0.1rem solid var(--border-hover-color);
+    }
+  }
+
+  & .filter {
+    border: 0.1rem solid var(--border-color);
+    background-color: var(--element-color);
+    width: 28rem;
+
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+
+    & .filter-select {
+      height: 3.8rem;
+      width: 100%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      padding: 0 1.2rem;
+      background-color: var(--element-color);
+      cursor: pointer;
+    }
+
+    &:hover {
+      border: 0.1rem solid var(--border-hover-color);
+    }
+  }
+}
+
 .contries-content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
@@ -68,16 +182,17 @@ span {
   & .country-card {
     display: block;
     text-decoration: none;
-    color: black;
+    color: white;
     overflow: hidden;
     transition: all 0.3s linear;
-    background-color: rgb(232, 244, 255);
-    border: 0.1rem solid rgba(0, 0, 0, 0.2);
+    background-color: var(--element-color);
+    border: 0.1rem solid var(--border-color);
+    box-shadow: 0rem 0rem 2.2rem 0.1rem var(--shadow-color);
     &:hover {
       & img {
         scale: 1.1;
       }
-      border: 0.1rem solid rgba(0, 0, 0, 1);
+      border: 0.1rem solid var(--border-hover-color);
       transition: all 0.2s ease-in;
       -webkit-transition: all 0.2s ease-in;
       -moz-transition: all 0.2s ease-in;
@@ -92,7 +207,7 @@ span {
       -moz-transition: all 0.2s ease-in;
       -ms-transition: all 0.2s ease-in;
       -o-transition: all 0.2s ease-in;
-      border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+      border-bottom: 0.1rem solid var(--border-color);
     }
 
     & .card-content {
@@ -100,6 +215,7 @@ span {
     }
   }
 }
+
 /***** End Countries List *****/
 
 /***** Country *****/
@@ -110,16 +226,19 @@ span {
   padding: 0.8rem 1.8rem 0.8rem 1.2rem;
   font-weight: 600;
   font-size: 1.4rem;
-  border: 0.1rem solid rgba(0, 0, 0, 0.1);
-  background-color: rgb(232, 244, 255);
+  border: 0.1rem solid var(--border-color);
+  background-color: var(--element-color);
   transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
   -ms-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
+  cursor: pointer;
   &:hover {
-    border: 0.1rem solid rgba(0, 0, 0, 1);
+    border: 0.1rem solid var(--border-hover-color);
     & .fa-solid {
+      scale: 1.2;
+      color: var(--border-hover-color);
       transform: translateX(-2rem);
       -webkit-transform: translateX(-2rem);
       -moz-transform: translateX(-2rem);
@@ -134,12 +253,6 @@ span {
     -ms-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
   }
-
-  border-radius: 0.2rem;
-  -webkit-border-radius: 0.2rem;
-  -moz-border-radius: 0.2rem;
-  -ms-border-radius: 0.2rem;
-  -o-border-radius: 0.2rem;
 }
 
 .country-more-content {
@@ -148,6 +261,7 @@ span {
   gap: 3.2rem;
   place-content: center;
   margin-bottom: 2.4rem;
+  color: var(--text-color);
   & .more-content--flag {
     display: flex;
     justify-content: center;
@@ -155,7 +269,7 @@ span {
 
     & img {
       width: 100%;
-      border: 0.1rem solid rgba(0, 0, 0, 0.2);
+      border: 0.1rem solid var(--border-color);
     }
   }
 
@@ -164,9 +278,8 @@ span {
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    border: 0.1rem solid rgba(0, 0, 0, 0.2);
-
-    background-color: rgb(232, 244, 255);
+    border: 0.1rem solid var(--border-color);
+    background-color: var(--element-color);
     padding: 2.4rem;
     & .country-informations {
       display: grid;
@@ -182,22 +295,17 @@ span {
     & .country-border {
       & a {
         display: inline-block;
-        border: 0.1rem solid rgba(0, 0, 0, 0.2);
+        border: 0.1rem solid var(--border-color);
         margin-left: 0.6rem;
-        margin-bottom: .2rem;
+        margin-bottom: 0.6rem;
         padding: 0.2rem 0.6rem;
-        border-radius: 0.2rem;
-        -webkit-border-radius: 0.2rem;
-        -moz-border-radius: 0.2rem;
-        -ms-border-radius: 0.2rem;
-        -o-border-radius: 0.2rem;
         transition: all 0.2s ease-in;
         -webkit-transition: all 0.2s ease-in;
         -moz-transition: all 0.2s ease-in;
         -ms-transition: all 0.2s ease-in;
         -o-transition: all 0.2s ease-in;
         &:hover {
-          border: 0.1rem solid rgba(0, 0, 0, 0.9);
+          border: 0.1rem solid var(--border-hover-color);
         }
       }
     }
@@ -223,7 +331,7 @@ span {
     font-size: 1.6rem;
     font-weight: 600;
   }
-   .country-more-content {
+  .country-more-content {
     & .more-content--details {
       & .country-informations {
         display: block;
@@ -251,8 +359,6 @@ span {
       }
     }
   }
-
-  
 }
 
 @media (max-width: 400px) {
@@ -270,6 +376,4 @@ span {
     font-size: 1.2rem;
     font-weight: 600;
   }
-
- 
 }
