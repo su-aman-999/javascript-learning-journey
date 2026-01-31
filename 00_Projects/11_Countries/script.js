@@ -4,7 +4,6 @@
 const countriesContent = document.querySelector(".countries-content");
 const filterSelect = document.querySelector(".filter-select");
 const searchInput = document.querySelector(".search-input");
-const countryCard = document.createElement("a");
 
 /* Store all fetched countries for filtering & search */
 let allCoutriesList;
@@ -18,6 +17,7 @@ function setCountryDetails(data) {
 
   // Create card for each country
   data.forEach((country) => {
+    const countryCard = document.createElement("a");
     countryCard.href = `./country.html?name=${country.name.common}`;
     countryCard.classList.add("country-card");
 
