@@ -1,7 +1,13 @@
+/* --------------------------------------------------
+   Get country name from URL query parameter
+-------------------------------------------------- */
 const countryName = new URLSearchParams(location.search).get("name");
+
+/* --------------------------------------------------
+   DOM Elements Selection
+-------------------------------------------------- */
 const countryFlag = document.querySelector(".more-content--flag img");
 const commonCountryName = document.querySelector(".country-name");
-
 const nativeCountryName = document.querySelector("#native-name");
 const countryPopulation = document.querySelector("#population");
 const countryRegion = document.querySelector("#region");
@@ -14,25 +20,36 @@ const countryCorrencies = document.querySelector("#currencies");
 const countryLanguages = document.querySelector("#languages");
 const countryContinents = document.querySelector("#continents");
 const countryBorders = document.querySelector("#borders");
+const title = document.querySelector("title");
+const faviconb = document.querySelector(".favicon");
 
+/* --------------------------------------------------
+   Fetch country details from REST Countries API
+-------------------------------------------------- */
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
   .then((res) => res.json())
   .then(([country]) => {
     console.log(country);
 
+    /* Update page title and favicon dynamically */
+    title.innerText = `World Explorer - ${country.name.common}`;
+    faviconb.href = `${country.flags.svg}`;
+
+    /* Set country flag */
     countryFlag.alt = country.flags.alt;
     countryFlag.src = country.flags.svg;
 
-    console.log(country);
-
+    /* Set common country name */
     commonCountryName.innerText = country.name.common;
 
+    /* Native name handling */
     if (country.name.nativeName) {
       const nativeNames = Object.values(country.name.nativeName)[0];
       nativeCountryName.innerHTML = `<span>Native Name: </span>  ${nativeNames ? Object.values(country.name.nativeName)[0].official : country.name.common}`;
     } else
       nativeCountryName.innerHTML = `<span>Native Name: </span>Not Applicable`;
 
+    /* Basic country information */
     countryPopulation.innerHTML = `<span>Population: </span>${country.population.toLocaleString("en-IN")}`;
     countryRegion.innerHTML = `<span>Region: </span>${country.region}`;
     countrySubRegion.innerHTML = `<span>Sub Region: </span>${country.subregion || country.region}`;
@@ -41,6 +58,7 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
     countryArea.innerHTML = `<span>Area: </span>${country.area}`;
     countryTopLevelDomain.innerHTML = `<span>Top Level Domain: </span>${country.tld}`;
 
+    /* Currencies handling */
     if (country.currencies) {
       const currencieList = Object.values(country.currencies).map(
         (currencie) => `${currencie.name}(${currencie.symbol})`,
@@ -49,11 +67,18 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
     } else
       countryCorrencies.innerHTML = `<span>Currencies: </span>Not Applicable`;
 
+    /* Languages handling */
     if (country.languages)
       countryLanguages.innerHTML = `<span>Languages: </span>${Object.values(country.languages).join(", ")}`;
     else countryLanguages.innerHTML = `<span>Languages: </span>Not Applicable`;
+
+    /* Continents */
     countryContinents.innerHTML = `<span>Continents: </span>${country.continents.join(", ") || "NA"}`;
 
+    /* --------------------------------------------------
+       Country Code to Country Name Mapping
+       (Used for border countries navigation)
+    -------------------------------------------------- */
     const countryNamesAndCodes = {
       ABW: "Aruba",
       AFG: "Afghanistan",
@@ -307,6 +332,9 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
       ZWE: "Zimbabwe",
     };
 
+    /* --------------------------------------------------
+       Render Border Countries
+    -------------------------------------------------- */
     if (country.borders) {
       country.borders.forEach((borderName) => {
         bdr = document.createElement("a");
@@ -317,5 +345,3 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
     } else
       countryBorders.innerHTML = `<span>Border Countries: </span>No neighboring nations to display`;
   });
-
-

@@ -1,16 +1,59 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Character encoding -->
     <meta charset="UTF-8" />
+
+    <!-- Responsive design for all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- SEO: Page description (shown in search results) -->
+    <meta
+      name="description"
+      content="World Explorer is a modern web app to explore countries around the world. Search countries, filter by region, view population, capital, currencies, languages, borders, and detailed country information using REST Countries API."
+    />
+
+    <!-- SEO: Keywords for search engines -->
+    <meta
+      name="keywords"
+      content="World Explorer, Countries Information App, Country Explorer, REST Countries API, Country Data, World Countries, Geography App, JavaScript Project, Frontend Web Project, Countries Details, Population Capital Region"
+    />
+
+    <!-- Website author -->
+    <meta name="author" content="Aman Kumar" />
+
+    <!-- Search engine crawling instructions -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph: Title for social media sharing -->
+    <meta
+      property="og:title"
+      content="World Explorer - Explore Countries Worldwide"
+    />
+
+    <!-- Open Graph: Description for social media sharing -->
+    <meta
+      property="og:description"
+      content="Explore detailed information about countries worldwide including population, capital, region, languages, and borders with World Explorer."
+    />
+
+    <!-- Open Graph: Content type -->
+    <meta property="og:type" content="website" />
+
+    <!-- Preconnect for faster Google Fonts loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Font: Poppins -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="./style.css" />
+
+    <!-- Font Awesome icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -18,24 +61,46 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Dark/Light mode switcher script -->
     <script src="./mode-switcher.js" defer></script>
+
+    <!-- Main JavaScript file -->
     <script src="./script.js" defer></script>
-    <title>Countries</title>
+
+    <!-- Website title (shown in browser tab) -->
+    <title>World Explorer</title>
+
+    <!-- Website favicon -->
+    <link rel="icon" type="image/webp" href="./world-svgrepo-com.svg" />
   </head>
+
   <body class="light-mode">
+
+    <!-- Header Section -->
     <header class="header" id="header">
       <div class="header-content container">
-        <h1 class="header-logo"><a href="#header">Where in the world?</a></h1>
 
+        <!-- Website Logo / Title -->
+        <h1 class="header-logo">
+          <a href="#header">Where in the world?</a>
+        </h1>
+
+        <!-- Dark / Light Mode Toggle -->
         <h3 class="header-mode">
           <i class="fa-regular fa-moon"></i>&nbsp;Dark Mode
         </h3>
       </div>
     </header>
 
+    <!-- Main Content Area -->
     <main>
       <div class="container">
+
+        <!-- Search and Filter Section -->
         <div class="search-filter">
+          
+          <!-- Search Country Input -->
           <div class="search">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input
@@ -44,9 +109,11 @@
               placeholder="Search for a country..."
             />
           </div>
+
+          <!-- Filter Countries by Region -->
           <div class="filter">
             <select class="filter-select">
-              <option hidden>Filetr by Region</option>
+              <option hidden>Filter by Region</option>
               <option value="All Countries">All Countries</option>
               <option value="Africa">Africa</option>
               <option value="America">America</option>
@@ -57,7 +124,8 @@
           </div>
         </div>
 
-        <div class="contries-content"></div>
+        <!-- Countries Cards Container (Dynamic Content) -->
+        <div class="countries-content"></div>
       </div>
     </main>
   </body>
